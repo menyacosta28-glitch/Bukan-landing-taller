@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller de Defensa Personal · Krav Magá Bukan</title>
+
+<!-- ============================================================================
+     ✏️  ZONA EDITABLE — cambia aquí los datos de cada taller.
+     Para abrir un taller nuevo (otra fecha, otro precio, hombres, etc.)
+     SOLO edita los valores de abajo. No necesitas tocar nada más del archivo.
+     - Si solo hay UNA fecha, deja fecha2.num en "" (vacío) y se oculta sola.
+     - Si no hay precio para dos, deja precio2 en "" (vacío) y se oculta solo.
+     - Las comillas " " deben quedar siempre alrededor de cada texto.
+     ============================================================================ -->
+<script>
+const CONFIG = {
+  // --- WhatsApp (a dónde llega la gente) ---
+  whatsapp:        "526145978499",   // país (52) + número, sin espacios ni signos
+  whatsappTexto:   "Hola, quiero información del Taller de Defensa Personal de Krav Magá Bukan.",
+  telefonoVisible: "614 597 8499",
+
+  // --- Público del taller ---
+  publico: "Solo mujeres",           // ej. "Solo mujeres" · "Mujeres y hombres" · "Abierto"
+
+  // --- Fechas (hasta 2). Día, número y mes ---
+  fecha1: { dia: "Martes", num: "16", mes: "Junio" },
+  fecha2: { dia: "Sábado", num: "20", mes: "Junio" },   // deja num:"" si no hay 2ª fecha
+
+  hora:     "9:00 a.m. – 1:00 p.m.",
+  duracion: "4 horas",
+
+  // --- Lugar ---
+  lugar:      "SB1 Barre Studio, Paseos Vista del Sol",
+  lugarCorto: "SB1 Barre Studio",
+
+  // --- Precios ---
+  precio1: "$700",   precio1Quien: "MXN · una persona",
+  precio2: "$1,200", precio2Quien: "MXN · dos personas",   // deja precio2:"" si no aplica
+
+  // --- Cupo ---
+  cupo: "20 lugares por fecha",
+
+  // --- Foto principal del hero (archivo dentro de assets/) ---
+  foto: "assets/patada-frontal.png",
+};
+</script>
+<!-- ====================  fin de la zona editable  ==================== -->
+
+<meta name="description" content="Taller intensivo de Defensa Personal basado en Krav Magá — escuela Bukán. SB1 Barre Studio, Paseos Vista del Sol. Sin experiencia previa.">
+<!-- Open Graph / vista previa al compartir en Meta y WhatsApp -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Taller de Defensa Personal · Krav Magá Bukan">
+<meta property="og:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. SB1 Barre Studio. Sin experiencia previa, sin condición física especial.">
+<meta property="og:image" content="assets/patada-frontal.png">
+<meta property="og:locale" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Taller de Defensa Personal · Krav Magá Bukan">
+<meta name="twitter:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. SB1 Barre Studio.">
+<meta name="twitter:image" content="assets/patada-frontal.png">
+<link rel="icon" href="assets/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Oswald:wght@400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  :root{
+    --crimson:#9e1916; --crimson-deep:#7c1311;
+    --wine:#4e0e20; --wine-deep:#380a17;
+    --gold:#f8ad22; --gold-deep:#d98e0a;
+    --lavender:#9a91b3; --ink:#16131a;
+    --paper:#faf8f5; --paper-2:#f1eee9;
+    --line:#e3ded6; --muted:#7c7468; --body:#3a3631;
+    --blue:#144d90; --blue-deep:#0e3a6e; --azure:#7fa1d7; --paper-blue:#eef2f8;
+    --font-display:'Cinzel',serif;
+    --font-head:'Oswald',sans-serif;
+    --font-body:'Barlow',system-ui,sans-serif;
+    --wrap:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--body);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  h1,h2,h3{margin:0;color:var(--ink)}
+  a{color:inherit}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .kicker{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:13px;color:var(--gold-deep);display:inline-flex;align-items:center;gap:12px}
+  .kicker::before{content:"";width:30px;height:3px;background:var(--crimson);border-radius:2px}
+  .kicker.light{color:var(--gold)}
+  .kicker.center{justify-content:center}
+
+  /* ---- WhatsApp button ---- */
+  .wa{display:inline-flex;align-items:center;justify-content:center;gap:11px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.07em;font-weight:600;font-size:16px;line-height:1;
+    padding:17px 30px;border-radius:8px;border:none;cursor:pointer;text-decoration:none;
+    background:var(--crimson);color:#fff;transition:transform .12s ease,background .2s ease,box-shadow .2s ease;box-shadow:0 6px 18px rgba(158,25,22,.28)}
+  .wa:hover{background:var(--crimson-deep);box-shadow:0 10px 26px rgba(158,25,22,.36);transform:translateY(-2px)}
+  .wa:active{transform:translateY(1px) scale(.99)}
+  .wa.gold{background:var(--gold);color:var(--ink);box-shadow:0 6px 18px rgba(248,173,34,.34)}
+  .wa.gold:hover{background:var(--gold-deep)}
+  .wa.lg{font-size:18px;padding:20px 38px}
+  .wa svg{width:21px;height:21px}
+
+  /* ---- Topbar ---- */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(22,19,26,.94);backdrop-filter:blur(10px);border-top:3px solid var(--blue);border-bottom:1px solid rgba(255,255,255,.08)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+  .brand img{height:48px}
+  .brand .wm{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.12em;color:#fff;font-weight:700;font-size:19px;line-height:1}
+  .brand .wm small{display:block;font-family:var(--font-head);font-weight:400;font-size:9.5px;letter-spacing:.22em;color:var(--lavender);margin-top:3px}
+  .topbar .wa{padding:12px 20px;font-size:13px;box-shadow:none}
+
+  /* ---- Hero ---- */
+  .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(118deg,var(--wine-deep) 0%,var(--wine) 50%,transparent 50.2%)}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:74px 24px 80px}
+  .hero h1{color:#fff;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;line-height:1.04;font-weight:700;font-size:clamp(2.3rem,4.6vw,3.7rem);margin:20px 0 0}
+  .hero p.lead{font-size:19px;line-height:1.55;color:#e7e0e9;margin:20px 0 0;max-width:520px}
+  .hero p.lead b{color:#fff}
+  .facts{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+  .fact{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:9px 14px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.05em;font-size:12.5px;font-weight:500;color:#fff}
+  .fact svg{width:16px;height:16px;color:var(--gold)}
+  .hero-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:30px 0 0}
+  .hero-cta .note{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--gold)}
+  .hero-photo{position:relative}
+  .hero-photo .frame{border-radius:12px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);background:var(--wine-deep)}
+  .hero-photo .frame img{width:100%;height:520px;object-fit:cover;object-position:center top}
+  .hero-photo .tag{position:absolute;left:-16px;bottom:26px;background:var(--gold);color:var(--ink);font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-weight:600;font-size:13px;padding:11px 16px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.3)}
+
+  /* ---- Section base ---- */
+  section{padding:84px 0}
+  .sec-head{max-width:680px}
+  .sec-head h2{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.01em;line-height:1.06;font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 0}
+  .sec-head p{font-size:18px;margin:16px 0 0}
+
+  /* ---- Dates band ---- */
+  .dates{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0}
+  .dates .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .dates .wrap.single{grid-template-columns:1fr;max-width:560px}
+  .date-card{display:flex;align-items:center;gap:20px;padding:34px 28px}
+  .date-card+.date-card{border-left:1px solid var(--line)}
+  .date-num{font-family:var(--font-display);font-weight:700;color:var(--crimson);font-size:54px;line-height:.9}
+  .date-card .d-day{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:14px;color:var(--ink)}
+  .date-card .d-meta{font-size:14.5px;color:var(--muted);margin-top:3px}
+  .date-card .d-month{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--blue);font-weight:600}
+
+  /* ---- Why / two col ---- */
+  .why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .why .photo{border-radius:12px;overflow:hidden;box-shadow:0 14px 36px rgba(22,19,26,.16)}
+  .why .photo img{width:100%;height:420px;object-fit:cover}
+  .why h2{font-family:var(--font-head);text-transform:uppercase;line-height:1.08;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.5rem);margin:14px 0 0}
+  .why p{margin:16px 0 0;font-size:17px}
+  .why .pts{margin:24px 0 0;display:flex;flex-direction:column;gap:14px;padding:0;list-style:none}
+  .why .pts li{display:flex;gap:14px;align-items:flex-start}
+  .why .pts svg{width:22px;height:22px;color:var(--blue);flex:0 0 auto;margin-top:2px}
+  .why .pts b{color:var(--ink);font-weight:600}
+
+  /* ---- Heritage band (Israel blue/white) ---- */
+  .heritage{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .heritage .wrap{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;padding:52px 24px}
+  .heritage .book{width:150px;border-radius:6px;box-shadow:0 14px 30px rgba(20,77,144,.28);border:4px solid #fff}
+  .heritage .kicker{color:var(--blue)}
+  .heritage .kicker::before{background:var(--blue)}
+  .heritage h2{font-family:var(--font-head);text-transform:uppercase;line-height:1.1;font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--ink);margin:13px 0 0}
+  .heritage p{margin:14px 0 0;font-size:16.5px;color:var(--body);max-width:560px}
+  .heritage .flag{display:inline-flex;gap:5px;margin-top:18px}
+  .heritage .flag span{width:34px;height:6px;border-radius:3px}
+
+  /* ---- Learn (3 cards) ---- */
+  .learn{background:var(--ink);color:#fff;position:relative}
+  .learn::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue)}
+  .learn .kicker{color:var(--gold)}
+  .learn .kicker::before{background:var(--crimson)}
+  .learn h2{color:#fff}
+  .learn .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:44px 0 0}
+  .lcard{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:30px 26px}
+  .lcard .ico{width:52px;height:52px;border-radius:10px;background:var(--crimson);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .lcard .ico svg{width:26px;height:26px;color:#fff}
+  .lcard h3{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.04em;font-size:19px;color:#fff;margin-bottom:8px}
+  .lcard p{margin:0;color:#cfc6d1;font-size:15.5px}
+  .learn .dur{margin:40px 0 0;text-align:center;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:var(--gold)}
+
+  /* ---- Logistics ---- */
+  .logi .panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(22,19,26,.07);overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr}
+  .logi .price-side{background:var(--wine);color:#fff;padding:44px 40px}
+  .logi .price-side .kicker{color:var(--gold)}
+  .price-row{display:flex;align-items:baseline;gap:14px;margin-top:18px}
+  .price-row .amt{font-family:var(--font-display);font-weight:700;font-size:42px;color:#fff;line-height:1}
+  .price-row .who{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--lavender)}
+  .logi .price-side .sub{margin-top:24px;font-size:15px;color:#e7e0e9}
+  .logi .info-side{padding:44px 40px;display:flex;flex-direction:column;gap:20px}
+  .info-item{display:flex;gap:14px;align-items:flex-start}
+  .info-item svg{width:22px;height:22px;color:var(--crimson);flex:0 0 auto;margin-top:2px}
+  .info-item .t{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;color:var(--muted);font-weight:600}
+  .info-item .v{font-size:16px;color:var(--ink);font-weight:500}
+  .bring{background:var(--paper-2);border-radius:9px;padding:16px 18px;font-size:15px}
+  .bring b{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;color:var(--crimson)}
+
+  /* ---- Final CTA ---- */
+  .final{background:linear-gradient(140deg,var(--wine) 0%,var(--wine-deep) 100%);color:#fff;text-align:center}
+  .final h2{color:#fff;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;font-weight:700;font-size:clamp(2rem,4vw,3rem)}
+  .final p{font-size:19px;color:#e7e0e9;max-width:560px;margin:18px auto 0}
+  .final .wa{margin-top:32px}
+  .final .phone{margin-top:22px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.1em;font-size:14px;color:var(--gold);display:flex;align-items:center;justify-content:center;gap:9px}
+  .final .phone svg{width:18px;height:18px}
+
+  /* ---- Footer ---- */
+  footer{background:var(--ink);color:#b6adbb;padding:40px 0;border-top:3px solid var(--blue)}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer .brand .wm{font-size:17px}
+  footer .loc{font-size:14px;text-align:right;line-height:1.7}
+  footer .loc b{color:#fff;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;gap:36px;padding:54px 24px 60px}
+    .hero::before{background:linear-gradient(180deg,var(--wine) 0%,var(--wine-deep) 100%)}
+    .hero-photo .frame img{height:380px}
+    .why .wrap{grid-template-columns:1fr;gap:32px}
+    .why .photo{order:-1}
+    .heritage .wrap{grid-template-columns:1fr;gap:26px;text-align:center}
+    .heritage .book{margin:0 auto}
+    .heritage .kicker,.heritage .flag{justify-content:center}
+    .learn .grid{grid-template-columns:1fr}
+    .logi .panel{grid-template-columns:1fr}
+    .dates .wrap{grid-template-columns:1fr}
+    .date-card+.date-card{border-left:none;border-top:1px solid var(--line)}
+    footer .wrap{justify-content:center;text-align:center}
+    footer .loc{text-align:center}
+    .topbar .brand .wm small{display:none}
+  }
+  @media(max-width:520px){
+    section{padding:60px 0}
+    .topbar .wa span.lbl{display:none}
+    .topbar .wa{padding:11px 14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/escudo.png" alt="Escudo Bukan">
+      <span class="wm">Bukan<small>School of Krav Maga</small></span>
+    </a>
+    <a class="wa wa-link" href="#" target="_blank" rel="noopener">
+      <i data-lucide="message-circle"></i><span class="lbl">Quiero inscribirme</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kicker light" id="heroKicker">Taller intensivo</span>
+      <h1>¿Lista para aprender a defenderte?</h1>
+      <p class="lead">Taller intensivo de <b>Defensa Personal</b> basado en Krav Magá — de la escuela <b>Bukán</b>, la escuela original de Krav Magá en el mundo. Sin experiencia previa. Sin condición física especial.</p>
+      <div class="facts">
+        <span class="fact"><i data-lucide="calendar"></i><span id="factFechas">—</span></span>
+        <span class="fact"><i data-lucide="clock"></i><span id="factHora">—</span></span>
+        <span class="fact"><i data-lucide="map-pin"></i><span id="factLugar">—</span></span>
+      </div>
+      <div class="hero-cta">
+        <a class="wa lg wa-link" href="#" target="_blank" rel="noopener">
+          <i data-lucide="message-circle"></i>Quiero inscribirme
+        </a>
+        <span class="note" id="heroNote">Cupo limitado</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img id="heroFoto" src="assets/patada-frontal.png" alt="Persona entrenando una patada de Krav Magá"></div>
+      <span class="tag">Krav Magá · Defensa real</span>
+    </div>
+  </div>
+</section>
+
+<!-- DATES -->
+<div class="dates">
+  <div class="wrap" id="datesWrap">
+    <div class="date-card" id="dateCard1">
+      <span class="date-num" id="d1Num">—</span>
+      <div>
+        <div class="d-month" id="d1Mes">—</div>
+        <div class="d-day" id="d1Dia">—</div>
+        <div class="d-meta" id="d1Meta">—</div>
+      </div>
+    </div>
+    <div class="date-card" id="dateCard2">
+      <span class="date-num" id="d2Num">—</span>
+      <div>
+        <div class="d-month" id="d2Mes">—</div>
+        <div class="d-day" id="d2Dia">—</div>
+        <div class="d-meta" id="d2Meta">—</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="why">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Por qué Krav Magá</span>
+      <h2>No aprendes a pelear.<br>Aprendes a reaccionar.</h2>
+      <p>El Krav Magá es defensa personal pura — no es un deporte ni tiene competencias. No se trata de fuerza ni de técnica deportiva: se trata de responder rápido y con eficacia en una situación real de peligro.</p>
+      <ul class="pts">
+        <li><i data-lucide="check-circle-2"></i><span><b>No depende de la fuerza física.</b> Las técnicas aprovechan la sorpresa y los puntos vulnerables del agresor — funcionan para cualquier persona.</span></li>
+        <li><i data-lucide="check-circle-2"></i><span><b>Sin experiencia previa.</b> No necesitas condición física especial — solo ganas de aprender.</span></li>
+        <li><i data-lucide="check-circle-2"></i><span><b>Práctico desde el primer minuto.</b> Todo lo que ves, lo practicas.</span></li>
+      </ul>
+    </div>
+    <div class="photo"><img src="assets/training-pareja.png" alt="Entrenamiento de defensa personal"></div>
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<section class="heritage">
+  <div class="wrap">
+    <img class="book" src="assets/krav-maga-bible.png" alt="The Book of Krav-Maga, libro fundacional">
+    <div>
+      <span class="kicker">Origen Israel</span>
+      <h2>El arte marcial israelí<br>de defensa personal</h2>
+      <p>Las técnicas que aprenderás vienen directamente de la escuela <b>Bukán</b> y del libro fundacional del Krav Magá de Yaron Lichtenstein — la fuente original de este sistema, creado en Israel para proteger vidas reales.</p>
+      <div class="flag"><span style="background:var(--blue)"></span><span style="background:#fff;box-shadow:inset 0 0 0 1px #cdd8e8"></span><span style="background:var(--blue)"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARN -->
+<section class="learn">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Qué aprenderás</span>
+      <h2>En 4 horas, lo esencial para defenderte</h2>
+    </div>
+    <div class="grid">
+      <div class="lcard">
+        <div class="ico"><i data-lucide="zap"></i></div>
+        <h3>Golpes prácticos</h3>
+        <p>Golpes directos y efectivos a los puntos que de verdad detienen a un agresor.</p>
+      </div>
+      <div class="lcard">
+        <div class="ico"><i data-lucide="activity"></i></div>
+        <h3>Patadas básicas</h3>
+        <p>Patadas sencillas y potentes que puedes ejecutar sin entrenamiento previo.</p>
+      </div>
+      <div class="lcard">
+        <div class="ico"><i data-lucide="unlock"></i></div>
+        <h3>Liberaciones</h3>
+        <p>Salidas de agarres, estrangulamientos y abrazos por detrás — las situaciones más comunes.</p>
+      </div>
+    </div>
+    <div class="dur" id="learnDur">—</div>
+  </div>
+</section>
+
+<!-- LOGISTICS -->
+<section class="logi">
+  <div class="wrap">
+    <div class="panel">
+      <div class="price-side">
+        <span class="kicker">Inversión</span>
+        <div class="price-row" id="priceRow1"><span class="amt" id="amt1">—</span><span class="who" id="who1">—</span></div>
+        <div class="price-row" id="priceRow2"><span class="amt" id="amt2">—</span><span class="who" id="who2">—</span></div>
+        <p class="sub" id="priceSub">Cupo limitado — los lugares se confirman por orden de registro.</p>
+      </div>
+      <div class="info-side">
+        <div class="info-item"><i data-lucide="map-pin"></i><div><div class="t">Dónde</div><div class="v" id="infoLugar">—</div></div></div>
+        <div class="info-item"><i data-lucide="clock"></i><div><div class="t">Horario</div><div class="v" id="infoHora">—</div></div></div>
+        <div class="info-item"><i data-lucide="users"></i><div><div class="t">Cupo</div><div class="v" id="infoCupo">—</div></div></div>
+        <div class="bring"><b>Qué llevar</b><br>Ropa cómoda, calcetines y agua. Nada más — el resto lo ponemos nosotros.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <span class="kicker light center">Aparta tu lugar</span>
+    <h2>Aprende algo que puede<br>cambiarlo todo</h2>
+    <p>Escoge la fecha que mejor te acomode y escríbenos. Te resolvemos cualquier duda y confirmamos tu lugar al instante.</p>
+    <a class="wa gold lg wa-link" href="#" target="_blank" rel="noopener">
+      <i data-lucide="message-circle"></i>Quiero más información
+    </a>
+    <div class="phone"><i data-lucide="phone"></i><span id="telVisible">—</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top" style="text-decoration:none">
+      <img src="assets/escudo.png" alt="Escudo Bukan" style="height:52px">
+      <span class="wm" style="color:#fff;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.12em;font-weight:700">Bukan</span>
+    </a>
+    <div class="loc">
+      <b>Krav Magá Bukan</b><br>
+      <span id="footLugar">—</span><br>
+      WhatsApp <span id="footTel">—</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ====== Llena la página desde CONFIG (no necesitas editar esto) ====== */
+(function(){
+  var C = CONFIG;
+  var set = function(id, val){ var el = document.getElementById(id); if(el) el.textContent = val; };
+
+  // WhatsApp: arma el link wa.me con el texto precargado y lo pone en todos los botones
+  var waHref = "https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(C.whatsappTexto);
+  document.querySelectorAll("a.wa-link").forEach(function(a){ a.href = waHref; });
+
+  // Hero
+  set("heroKicker", "Taller intensivo · " + C.publico);
+  var hayDos = !!(C.fecha2 && C.fecha2.num);
+  var mes = C.fecha1.mes;
+  set("factFechas", hayDos
+      ? (C.fecha1.num + " y " + C.fecha2.num + " de " + mes.toLowerCase())
+      : (C.fecha1.num + " de " + mes.toLowerCase()));
+  set("factHora", C.hora);
+  set("factLugar", C.lugarCorto);
+  set("heroNote", "Solo " + C.cupo);
+  var foto = document.getElementById("heroFoto"); if(foto && C.foto) foto.src = C.foto;
+
+  // Banda de fechas
+  var meta = C.hora + " · " + C.duracion;
+  set("d1Num", C.fecha1.num); set("d1Mes", C.fecha1.mes); set("d1Dia", C.fecha1.dia); set("d1Meta", meta);
+  if(hayDos){
+    set("d2Num", C.fecha2.num); set("d2Mes", C.fecha2.mes); set("d2Dia", C.fecha2.dia); set("d2Meta", meta);
+  } else {
+    var c2 = document.getElementById("dateCard2"); if(c2) c2.style.display = "none";
+    var dw = document.getElementById("datesWrap"); if(dw) dw.classList.add("single");
+  }
+
+  // Qué aprenderás (duración)
+  set("learnDur", "Taller intensivo · " + C.duracion + " · " + C.hora);
+
+  // Precios
+  set("amt1", C.precio1); set("who1", C.precio1Quien);
+  if(C.precio2){
+    set("amt2", C.precio2); set("who2", C.precio2Quien);
+  } else {
+    var pr2 = document.getElementById("priceRow2"); if(pr2) pr2.style.display = "none";
+  }
+  set("priceSub", "Cupo limitado a " + C.cupo + " — los lugares se confirman por orden de registro.");
+
+  // Logística
+  set("infoLugar", C.lugar); set("infoHora", C.hora); set("infoCupo", "Solo " + C.cupo);
+
+  // Final + footer
+  set("telVisible", C.telefonoVisible);
+  set("footLugar", C.lugar);
+  set("footTel", C.telefonoVisible);
+
+  if(window.lucide) lucide.createIcons();
+})();
+</script>
+</body>
+</html>
