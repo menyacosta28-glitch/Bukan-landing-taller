@@ -44,7 +44,7 @@ const CONFIG = {
   cupo: "20 lugares por fecha",
 
   // --- Foto principal del hero (archivo dentro de assets/) ---
-  foto: "assets/defensa-personal-mujer.jpg",
+  foto: "assets/curso-real.jpg",
 };
 </script>
 <!-- ====================  fin de la zona editable  ==================== -->
@@ -55,14 +55,14 @@ const CONFIG = {
 <meta property="og:url" content="https://bukankravmaga.netlify.app/">
 <meta property="og:title" content="Taller de Defensa Personal · Krav Magá Bukan">
 <meta property="og:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. En Chihuahua, México (SB1 Barre Studio). Sin experiencia previa, sin condición física especial.">
-<meta property="og:image" content="https://bukankravmaga.netlify.app/assets/defensa-personal-mujer.jpg">
-<meta property="og:image:width" content="1400">
-<meta property="og:image:height" content="933">
+<meta property="og:image" content="https://bukankravmaga.netlify.app/assets/flyer-share.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
 <meta property="og:locale" content="es_MX">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Taller de Defensa Personal · Krav Magá Bukan">
 <meta name="twitter:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. En Chihuahua, México.">
-<meta name="twitter:image" content="https://bukankravmaga.netlify.app/assets/defensa-personal-mujer.jpg">
+<meta name="twitter:image" content="https://bukankravmaga.netlify.app/assets/flyer-share.jpg">
 <link rel="icon" href="assets/escudo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,7 +128,7 @@ const CONFIG = {
   .hero-cta .note{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--gold)}
   .hero-photo{position:relative}
   .hero-photo .frame{border-radius:12px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.12);background:var(--wine-deep)}
-  .hero-photo .frame img{width:100%;height:520px;object-fit:cover;object-position:center 42%}
+  .hero-photo .frame img{width:100%;height:520px;object-fit:cover;object-position:center 55%}
   .hero-photo .tag{position:absolute;left:-16px;bottom:26px;background:var(--gold);color:var(--ink);font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-weight:600;font-size:13px;padding:11px 16px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.3)}
 
   /* ---- Section base ---- */
@@ -214,6 +214,20 @@ const CONFIG = {
   .bring{background:var(--paper-2);border-radius:9px;padding:16px 18px;font-size:15px}
   .bring b{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-size:12.5px;color:var(--crimson)}
 
+  /* ---- Instructor ---- */
+  .instructor{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .instructor .wrap{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .instructor .kicker{color:var(--blue)}
+  .instructor .kicker::before{background:var(--blue)}
+  .instructor h2{font-family:var(--font-head);text-transform:uppercase;line-height:1.08;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.5rem);margin:14px 0 0}
+  .instructor p{margin:16px 0 0;font-size:17px}
+  .instructor p b{color:var(--ink)}
+  .ins-media{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ins-fig{margin:0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 12px 30px rgba(22,19,26,.1)}
+  .ins-fig img{width:100%;height:330px;object-fit:cover;object-position:center 22%;background:#f4f1ec}
+  .ins-fig.doc img{object-fit:contain;object-position:center;padding:8px}
+  .ins-fig figcaption{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-size:11px;color:var(--muted);text-align:center;padding:11px 8px;border-top:1px solid var(--line)}
+
   /* ---- Final CTA ---- */
   .final{background:linear-gradient(140deg,var(--wine) 0%,var(--wine-deep) 100%);color:#fff;text-align:center}
   .final h2{color:#fff;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.03em;font-weight:700;font-size:clamp(2rem,4vw,3rem)}
@@ -240,6 +254,7 @@ const CONFIG = {
     .heritage .kicker,.heritage .flag{justify-content:center}
     .learn .grid{grid-template-columns:1fr}
     .logi .panel{grid-template-columns:1fr}
+    .instructor .wrap{grid-template-columns:1fr;gap:30px}
     .dates-grid{flex-direction:column;max-width:430px}
     .date-or{border-left:none;border-right:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0}
     footer .wrap{justify-content:center;text-align:center}
@@ -288,8 +303,8 @@ const CONFIG = {
       </div>
     </div>
     <div class="hero-photo">
-      <div class="frame"><img id="heroFoto" src="assets/patada-frontal.png" alt="Persona entrenando una patada de Krav Magá"></div>
-      <span class="tag">Krav Magá · Defensa real</span>
+      <div class="frame"><img id="heroFoto" src="assets/curso-real.jpg" alt="Manuel Acosta, instructor de Bukan, enseñando defensa personal a un grupo de mujeres en SB1 Barre Studio"></div>
+      <span class="tag">Taller real · SB1 Barre Studio</span>
     </div>
   </div>
 </section>
@@ -343,14 +358,14 @@ const CONFIG = {
         <li><i data-lucide="check-circle-2"></i><span><b>Práctico desde el primer minuto.</b> Todo lo que ves, lo practicas.</span></li>
       </ul>
     </div>
-    <div class="photo"><img src="assets/training-pareja.png" alt="Entrenamiento de defensa personal"></div>
+    <div class="photo"><img src="assets/training-pareja.png" alt="Entrenamiento de defensa personal" loading="lazy"></div>
   </div>
 </section>
 
 <!-- HERITAGE -->
 <section class="heritage">
   <div class="wrap">
-    <img class="book" src="assets/krav-maga-bible.png" alt="The Book of Krav-Maga, libro fundacional">
+    <img class="book" src="assets/krav-maga-bible.png" alt="The Book of Krav-Maga, libro fundacional" loading="lazy">
     <div>
       <span class="kicker">Origen Israel</span>
       <h2>El arte marcial israelí<br>de defensa personal</h2>
@@ -404,6 +419,27 @@ const CONFIG = {
         <div class="info-item"><i data-lucide="users"></i><div><div class="t">Cupo</div><div class="v" id="infoCupo">—</div></div></div>
         <div class="bring"><b>Qué llevar</b><br>Ropa cómoda, calcetines y agua. Nada más — el resto lo ponemos nosotros.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="instructor">
+  <div class="wrap">
+    <div class="ins-info">
+      <span class="kicker">Tu instructor</span>
+      <h2>Con quién vas a entrenar</h2>
+      <p>Soy <b>Manuel Acosta Ruiz</b>, instructor certificado de Krav Magá por la escuela <b>Bukán</b> — la escuela original del sistema. En una situación real te defiendes <b>de civil</b>, tal como entrenamos en el taller. Para que sepas con quién entrenas, aquí me ves con el <b>uniforme y el escudo de Bukán</b>, junto al <b>diploma oficial</b> que me acredita como instructor.</p>
+    </div>
+    <div class="ins-media">
+      <figure class="ins-fig">
+        <img src="assets/instructor-gi.png" alt="Manuel Acosta con uniforme y escudo de Bukan Krav Maga" loading="lazy">
+        <figcaption>Uniforme y escudo de Bukán</figcaption>
+      </figure>
+      <figure class="ins-fig doc">
+        <img src="assets/diploma-instructor.png" alt="Diploma de instructor de Krav Magá — Bukan School of Krav Maga" loading="lazy">
+        <figcaption>Instructor certificado · Bukán, 2019</figcaption>
+      </figure>
     </div>
   </div>
 </section>
