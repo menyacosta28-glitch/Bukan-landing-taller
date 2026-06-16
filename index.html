@@ -33,6 +33,8 @@ const CONFIG = {
   // --- Lugar ---
   lugar:      "SB1 Barre Studio, Paseos Vista del Sol",
   lugarCorto: "SB1 Barre Studio",
+  ciudad:     "Chihuahua, México",
+  mapsUrl:    "https://www.google.com/maps/place/Barre+SB1/data=!4m2!3m1!1s0x0:0x90dd4700bb00554f?sa=X&ved=1t:2428&ictx=111",
 
   // --- Precios ---
   precio1: "$700",   precio1Quien: "MXN · una persona",
@@ -42,25 +44,25 @@ const CONFIG = {
   cupo: "20 lugares por fecha",
 
   // --- Foto principal del hero (archivo dentro de assets/) ---
-  foto: "assets/patada-frontal.png",
+  foto: "assets/mujer-pateando.png",
 };
 </script>
 <!-- ====================  fin de la zona editable  ==================== -->
 
-<meta name="description" content="Taller intensivo de Defensa Personal basado en Krav Magá — escuela Bukán. SB1 Barre Studio, Paseos Vista del Sol. Sin experiencia previa.">
+<meta name="description" content="Taller intensivo de Defensa Personal basado en Krav Magá — escuela Bukán. SB1 Barre Studio, Chihuahua, México. Sin experiencia previa.">
 <!-- Open Graph / vista previa al compartir en Meta y WhatsApp -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bukankravmaga.netlify.app/">
 <meta property="og:title" content="Taller de Defensa Personal · Krav Magá Bukan">
-<meta property="og:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. SB1 Barre Studio. Sin experiencia previa, sin condición física especial.">
-<meta property="og:image" content="https://bukankravmaga.netlify.app/assets/patada-frontal.png">
+<meta property="og:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. En Chihuahua, México (SB1 Barre Studio). Sin experiencia previa, sin condición física especial.">
+<meta property="og:image" content="https://bukankravmaga.netlify.app/assets/mujer-pateando.png">
 <meta property="og:image:width" content="358">
 <meta property="og:image:height" content="485">
 <meta property="og:locale" content="es_MX">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Taller de Defensa Personal · Krav Magá Bukan">
-<meta name="twitter:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. SB1 Barre Studio.">
-<meta name="twitter:image" content="https://bukankravmaga.netlify.app/assets/patada-frontal.png">
+<meta name="twitter:description" content="Taller intensivo basado en Krav Magá — escuela Bukán. En Chihuahua, México.">
+<meta name="twitter:image" content="https://bukankravmaga.netlify.app/assets/mujer-pateando.png">
 <link rel="icon" href="assets/escudo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -135,16 +137,30 @@ const CONFIG = {
   .sec-head h2{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.01em;line-height:1.06;font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 0}
   .sec-head p{font-size:18px;margin:16px 0 0}
 
-  /* ---- Dates band ---- */
-  .dates{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:0}
-  .dates .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0}
-  .dates .wrap.single{grid-template-columns:1fr;max-width:560px}
-  .date-card{display:flex;align-items:center;gap:20px;padding:34px 28px}
-  .date-card+.date-card{border-left:1px solid var(--line)}
+  /* ---- Dates band (one workshop, choose a date) ---- */
+  .dates{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0}
+  .dates .dhead{text-align:center;max-width:660px;margin:0 auto 30px}
+  .dates .dhead h2{font-family:var(--font-head);text-transform:uppercase;line-height:1.1;font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);margin:12px 0 0}
+  .dates .dhead p{margin:12px 0 0;font-size:16.5px;color:var(--body)}
+  .dates .dhead p b{color:var(--ink)}
+  .dates-grid{display:flex;align-items:stretch;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;max-width:780px;margin:0 auto;box-shadow:0 10px 30px rgba(22,19,26,.06)}
+  .date-card{display:flex;flex-direction:column;gap:14px;padding:30px 36px;flex:1}
+  .date-card .opt{align-self:flex-start;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:600;color:var(--blue);background:var(--paper-blue);padding:4px 11px;border-radius:5px}
+  .date-card .drow{display:flex;align-items:center;gap:18px}
   .date-num{font-family:var(--font-display);font-weight:700;color:var(--crimson);font-size:54px;line-height:.9}
   .date-card .d-day{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:14px;color:var(--ink)}
   .date-card .d-meta{font-size:14.5px;color:var(--muted);margin-top:3px}
   .date-card .d-month{font-family:var(--font-head);text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--blue);font-weight:600}
+  .date-or{display:flex;align-items:center;justify-content:center;min-width:56px;padding:0 6px;font-family:var(--font-head);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--muted);background:var(--paper-2);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+  .dates-grid.single{max-width:430px}
+
+  /* ---- Map link (ubicación picable) ---- */
+  .maplink{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(20,77,144,.4);font-weight:600;transition:color .15s,border-color .15s}
+  .maplink:hover{color:var(--blue-deep);border-color:var(--blue-deep)}
+  .maphint{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-family:var(--font-head);text-transform:uppercase;letter-spacing:.06em;font-size:11.5px;font-weight:600;color:var(--blue)}
+  .maphint svg{width:13px;height:13px}
+  a.fact{cursor:pointer;text-decoration:none}
+  a.fact:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
 
   /* ---- Why / two col ---- */
   .why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -224,8 +240,8 @@ const CONFIG = {
     .heritage .kicker,.heritage .flag{justify-content:center}
     .learn .grid{grid-template-columns:1fr}
     .logi .panel{grid-template-columns:1fr}
-    .dates .wrap{grid-template-columns:1fr}
-    .date-card+.date-card{border-left:none;border-top:1px solid var(--line)}
+    .dates-grid{flex-direction:column;max-width:430px}
+    .date-or{border-left:none;border-right:none;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0}
     footer .wrap{justify-content:center;text-align:center}
     footer .loc{text-align:center}
     .topbar .brand .wm small{display:none}
@@ -262,7 +278,7 @@ const CONFIG = {
       <div class="facts">
         <span class="fact"><i data-lucide="calendar"></i><span id="factFechas">—</span></span>
         <span class="fact"><i data-lucide="clock"></i><span id="factHora">—</span></span>
-        <span class="fact"><i data-lucide="map-pin"></i><span id="factLugar">—</span></span>
+        <a class="fact" id="factLugarLink" href="#" target="_blank" rel="noopener"><i data-lucide="map-pin"></i><span id="factLugar">—</span></a>
       </div>
       <div class="hero-cta">
         <a class="wa lg wa-link" href="#" target="_blank" rel="noopener">
@@ -280,21 +296,35 @@ const CONFIG = {
 
 <!-- DATES -->
 <div class="dates">
-  <div class="wrap" id="datesWrap">
-    <div class="date-card" id="dateCard1">
-      <span class="date-num" id="d1Num">—</span>
-      <div>
-        <div class="d-month" id="d1Mes">—</div>
-        <div class="d-day" id="d1Dia">—</div>
-        <div class="d-meta" id="d1Meta">—</div>
-      </div>
+  <div class="wrap">
+    <div class="dhead">
+      <span class="kicker center">Tú eliges la fecha</span>
+      <h2>Es el mismo taller — escoge solo una fecha</h2>
+      <p>Las dos opciones son <b>idénticas</b> en contenido y duración. No tienes que ir a las dos: <b>apártate en la que mejor te acomode.</b></p>
     </div>
-    <div class="date-card" id="dateCard2">
-      <span class="date-num" id="d2Num">—</span>
-      <div>
-        <div class="d-month" id="d2Mes">—</div>
-        <div class="d-day" id="d2Dia">—</div>
-        <div class="d-meta" id="d2Meta">—</div>
+    <div class="dates-grid" id="datesWrap">
+      <div class="date-card" id="dateCard1">
+        <span class="opt">Opción A</span>
+        <div class="drow">
+          <span class="date-num" id="d1Num">—</span>
+          <div>
+            <div class="d-month" id="d1Mes">—</div>
+            <div class="d-day" id="d1Dia">—</div>
+            <div class="d-meta" id="d1Meta">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="date-or" id="dateOr">ó</div>
+      <div class="date-card" id="dateCard2">
+        <span class="opt">Opción B</span>
+        <div class="drow">
+          <span class="date-num" id="d2Num">—</span>
+          <div>
+            <div class="d-month" id="d2Mes">—</div>
+            <div class="d-day" id="d2Dia">—</div>
+            <div class="d-meta" id="d2Meta">—</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -369,7 +399,7 @@ const CONFIG = {
         <p class="sub" id="priceSub">Cupo limitado — los lugares se confirman por orden de registro.</p>
       </div>
       <div class="info-side">
-        <div class="info-item"><i data-lucide="map-pin"></i><div><div class="t">Dónde</div><div class="v" id="infoLugar">—</div></div></div>
+        <div class="info-item"><i data-lucide="map-pin"></i><div><div class="t">Dónde</div><div class="v"><a class="maplink" id="infoLugarLink" href="#" target="_blank" rel="noopener">—</a></div><div class="v" id="infoCiudad" style="font-weight:400;color:var(--muted);font-size:14.5px;margin-top:2px">—</div><a class="maphint" id="infoMapBtn" href="#" target="_blank" rel="noopener"><i data-lucide="navigation"></i>Ver en Google Maps · Cómo llegar</a></div></div>
         <div class="info-item"><i data-lucide="clock"></i><div><div class="t">Horario</div><div class="v" id="infoHora">—</div></div></div>
         <div class="info-item"><i data-lucide="users"></i><div><div class="t">Cupo</div><div class="v" id="infoCupo">—</div></div></div>
         <div class="bring"><b>Qué llevar</b><br>Ropa cómoda, calcetines y agua. Nada más — el resto lo ponemos nosotros.</div>
@@ -400,7 +430,8 @@ const CONFIG = {
     </a>
     <div class="loc">
       <b>Krav Magá Bukan</b><br>
-      <span id="footLugar">—</span><br>
+      <a class="maplink" id="footLugarLink" href="#" target="_blank" rel="noopener" style="color:var(--azure);border-color:rgba(127,161,215,.45)">—</a><br>
+      <span id="footCiudad">—</span><br>
       WhatsApp <span id="footTel">—</span>
     </div>
   </div>
@@ -412,29 +443,39 @@ const CONFIG = {
   var C = CONFIG;
   var set = function(id, val){ var el = document.getElementById(id); if(el) el.textContent = val; };
 
+  var setHref = function(id, url){ var el = document.getElementById(id); if(el) el.href = url; };
+
   // WhatsApp: arma el link wa.me con el texto precargado y lo pone en todos los botones
   var waHref = "https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(C.whatsappTexto);
   document.querySelectorAll("a.wa-link").forEach(function(a){ a.href = waHref; });
+
+  // Ubicación picable → Google Maps (en todos los puntos donde aparece el lugar)
+  setHref("factLugarLink", C.mapsUrl);
+  setHref("infoLugarLink", C.mapsUrl);
+  setHref("infoMapBtn", C.mapsUrl);
+  setHref("footLugarLink", C.mapsUrl);
 
   // Hero
   set("heroKicker", "Taller intensivo · " + C.publico);
   var hayDos = !!(C.fecha2 && C.fecha2.num);
   var mes = C.fecha1.mes;
+  // "o" deja claro que se elige UNA de las dos fechas (mismo taller)
   set("factFechas", hayDos
-      ? (C.fecha1.num + " y " + C.fecha2.num + " de " + mes.toLowerCase())
+      ? (C.fecha1.num + " o " + C.fecha2.num + " de " + mes.toLowerCase())
       : (C.fecha1.num + " de " + mes.toLowerCase()));
   set("factHora", C.hora);
   set("factLugar", C.lugarCorto);
   set("heroNote", "Solo " + C.cupo);
   var foto = document.getElementById("heroFoto"); if(foto && C.foto) foto.src = C.foto;
 
-  // Banda de fechas
+  // Banda de fechas (mismo taller, una sola fecha a elegir)
   var meta = C.hora + " · " + C.duracion;
   set("d1Num", C.fecha1.num); set("d1Mes", C.fecha1.mes); set("d1Dia", C.fecha1.dia); set("d1Meta", meta);
   if(hayDos){
     set("d2Num", C.fecha2.num); set("d2Mes", C.fecha2.mes); set("d2Dia", C.fecha2.dia); set("d2Meta", meta);
   } else {
     var c2 = document.getElementById("dateCard2"); if(c2) c2.style.display = "none";
+    var dor = document.getElementById("dateOr"); if(dor) dor.style.display = "none";
     var dw = document.getElementById("datesWrap"); if(dw) dw.classList.add("single");
   }
 
@@ -451,11 +492,13 @@ const CONFIG = {
   set("priceSub", "Cupo limitado a " + C.cupo + " — los lugares se confirman por orden de registro.");
 
   // Logística
-  set("infoLugar", C.lugar); set("infoHora", C.hora); set("infoCupo", "Solo " + C.cupo);
+  set("infoLugarLink", C.lugar); set("infoCiudad", C.ciudad);
+  set("infoHora", C.hora); set("infoCupo", "Solo " + C.cupo);
 
   // Final + footer
   set("telVisible", C.telefonoVisible);
-  set("footLugar", C.lugar);
+  set("footLugarLink", C.lugar);
+  set("footCiudad", C.ciudad);
   set("footTel", C.telefonoVisible);
 
   if(window.lucide) lucide.createIcons();
