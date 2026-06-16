@@ -21,4 +21,10 @@ mandarla por WhatsApp al instructor (Manuel). Sitio **estático** (sin servidor)
 
 ## Cambiar la foto del hero
 
-Pon la nueva imagen en `assets/` y actualiza `foto: "assets/tu-imagen.png"` en el CONFIG.
+Pon la nueva imagen en `assets/` y actualiza `foto: "assets/tu-imagen.jpg"` en el CONFIG.
+
+## Créditos de imágenes
+
+- Foto del hero (`defensa-personal-mujer.jpg`): **Pexels** (licencia libre, uso comercial sin
+  atribución requerida). Reemplazable por una foto propia cuando exista.
+- `patada-frontal.png` y `mujer-pateando.png` quedan como respaldo, sin uso actual.
