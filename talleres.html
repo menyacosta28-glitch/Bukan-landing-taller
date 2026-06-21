@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talleres de Defensa Personal · Krav Magá Bukán</title>
+
+<!-- ============================================================================
+     ✏️  ZONA EDITABLE — datos de cada taller.
+     PARA ABRIR UN TALLER NUEVO:
+       1) Pon  tallerActivo: true
+       2) Llena fechas, hora, lugar, precios y cupo abajo.
+     PARA CERRAR (sin taller agendado):
+       - Pon  tallerActivo: false   → la página entra en modo "Próximamente"
+         y oculta sola fechas, precios y logística.
+     Notas:
+       - Si solo hay UNA fecha, deja fecha2.num en "" (vacío) y se oculta sola.
+       - Si no hay precio para dos, deja precio2 en "" (vacío) y se oculta solo.
+       - Las comillas " " deben quedar siempre alrededor de cada texto.
+     ============================================================================ -->
+<script>
+const CONFIG = {
+  // --- ¿Hay un taller agendado ahora mismo? ---
+  tallerActivo: false,               // true = muestra el taller · false = modo "Próximamente"
+
+  // --- WhatsApp (a dónde llega la gente) ---
+  whatsapp:        "526145978499",   // país (52) + número, sin espacios ni signos
+  whatsappActivo:  "Hola, quiero información del Taller de Defensa Personal de Krav Magá Bukán.",
+  whatsappProximo: "Hola, quiero que me avisen cuándo es el próximo Taller de Defensa Personal de Krav Magá Bukán.",
+  telefonoVisible: "614 597 8499",
+
+  // --- Público del taller ---
+  publico: "Solo mujeres",           // ej. "Solo mujeres" · "Mujeres y hombres" · "Abierto"
+
+  // --- Fechas (hasta 2). Día, número y mes ---
+  fecha1: { dia: "Martes", num: "16", mes: "Junio" },
+  fecha2: { dia: "Sábado", num: "20", mes: "Junio" },   // deja num:"" si no hay 2ª fecha
+
+  hora:     "9:00 a.m. – 1:00 p.m.",
+  duracion: "4 horas",
+
+  // --- Lugar ---
+  lugar:      "SB1 Barre Studio, Paseos Vista del Sol",
+  lugarCorto: "SB1 Barre Studio",
+  ciudad:     "Chihuahua, México",
+  mapsUrl:    "https://www.google.com/maps/place/Barre+SB1/data=!4m2!3m1!1s0x0:0x90dd4700bb00554f?sa=X&ved=1t:2428&ictx=111",
+
+  // --- Precios ---
+  precio1: "$700",   precio1Quien: "MXN · una persona",
+  precio2: "$1,200", precio2Quien: "MXN · dos personas",   // deja precio2:"" si no aplica
+
+  // --- Cupo ---
+  cupo: "20 lugares por fecha",
+
+  // --- Foto principal del hero (archivo dentro de assets/) ---
+  foto: "assets/curso-real.jpg",
+};
+</script>
+<!-- ====================  fin de la zona editable  ==================== -->
+
+<meta name="description" content="Talleres intensivos de Defensa Personal basados en Krav Magá — escuela Bukán. Chihuahua, México. Sin experiencia previa, sin condición física especial.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bukankravmaga.netlify.app/talleres.html">
+<meta property="og:title" content="Talleres de Defensa Personal · Krav Magá Bukán">
+<meta property="og:description" content="Talleres intensivos basados en Krav Magá — escuela Bukán. En Chihuahua, México. Sin experiencia previa, sin condición física especial.">
+<meta property="og:image" content="https://bukankravmaga.netlify.app/assets/flyer-share.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+<meta property="og:locale" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Talleres de Defensa Personal · Krav Magá Bukán">
+<meta name="twitter:description" content="Talleres intensivos basados en Krav Magá — escuela Bukán. En Chihuahua, México.">
+<link rel="icon" href="assets/escudo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Oswald:wght@400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/escudo.png" alt="Escudo Bukán">
+      <span class="wm">Bukán<small>School of Krav Maga</small></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="talleres.html" class="active">Talleres</a>
+      <a href="colaboraciones.html">Colaboraciones</a>
+    </nav>
+    <a class="wa wa-link" href="#" target="_blank" rel="noopener">
+      <i data-lucide="message-circle"></i><span class="lbl" id="topbarCta">Quiero info</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kicker light" id="heroKicker">Taller intensivo</span>
+      <h1 id="heroTitle">¿Lista para aprender a defenderte?</h1>
+      <p class="lead" id="heroLead">Taller intensivo de <b>Defensa Personal</b> basado en Krav Magá — de la escuela <b>Bukán</b>, la escuela original de Krav Magá en el mundo. Sin experiencia previa. Sin condición física especial.</p>
+      <div class="facts" id="heroFacts">
+        <span class="fact"><i data-lucide="calendar"></i><span id="factFechas">—</span></span>
+        <span class="fact"><i data-lucide="clock"></i><span id="factHora">—</span></span>
+        <a class="fact" id="factLugarLink" href="#" target="_blank" rel="noopener"><i data-lucide="map-pin"></i><span id="factLugar">—</span></a>
+      </div>
+      <div class="hero-cta">
+        <a class="wa lg wa-link" href="#" target="_blank" rel="noopener">
+          <i data-lucide="message-circle"></i><span id="heroCtaTxt">Quiero inscribirme</span>
+        </a>
+        <span class="note" id="heroNote">Cupo limitado</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img id="heroFoto" src="assets/curso-real.jpg" alt="Manuel Acosta, instructor de Bukán, enseñando defensa personal a un grupo en SB1 Barre Studio"></div>
+      <span class="tag">Taller real · SB1 Barre Studio</span>
+    </div>
+  </div>
+</section>
+
+<!-- DATES (solo cuando hay taller activo) -->
+<div class="dates" id="datesBand">
+  <div class="wrap">
+    <div class="dhead">
+      <span class="kicker center">Tú eliges la fecha</span>
+      <h2>Es el mismo taller — escoge solo una fecha</h2>
+      <p>Las dos opciones son <b>idénticas</b> en contenido y duración. No tienes que ir a las dos: <b>apártate en la que mejor te acomode.</b></p>
+    </div>
+    <div class="dates-grid" id="datesWrap">
+      <div class="date-card" id="dateCard1">
+        <span class="opt">Opción A</span>
+        <div class="drow">
+          <span class="date-num" id="d1Num">—</span>
+          <div>
+            <div class="d-month" id="d1Mes">—</div>
+            <div class="d-day" id="d1Dia">—</div>
+            <div class="d-meta" id="d1Meta">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="date-or" id="dateOr">ó</div>
+      <div class="date-card" id="dateCard2">
+        <span class="opt">Opción B</span>
+        <div class="drow">
+          <span class="date-num" id="d2Num">—</span>
+          <div>
+            <div class="d-month" id="d2Mes">—</div>
+            <div class="d-day" id="d2Dia">—</div>
+            <div class="d-meta" id="d2Meta">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOON (solo en modo "Próximamente") -->
+<div class="soon" id="soonBox">
+  <div class="wrap">
+    <div class="box">
+      <span class="badge"><i data-lucide="calendar-clock"></i>Próximo taller por anunciarse</span>
+      <h2>Estamos preparando la siguiente fecha</h2>
+      <p>Por ahora no hay un taller abierto, pero pronto anunciaremos el próximo. Déjanos tu mensaje por WhatsApp y <b>serás de los primeros en enterarte</b> cuando abramos fechas e inscripciones.</p>
+      <a class="wa lg wa-link" href="#" target="_blank" rel="noopener">
+        <i data-lucide="message-circle"></i>Avísame del próximo taller
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- WHY (evergreen) -->
+<section class="why">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Por qué Krav Magá</span>
+      <h2>No aprendes a pelear.<br>Aprendes a reaccionar.</h2>
+      <p>El Krav Magá es defensa personal pura — un arte marcial sin deporte ni competencias. No se trata de fuerza ni de técnica deportiva: se trata de responder rápido y con eficacia en una situación real de peligro.</p>
+      <ul class="pts">
+        <li><i data-lucide="check-circle-2"></i><span><b>No depende de la fuerza física.</b> Las técnicas aprovechan la sorpresa y los puntos vulnerables del agresor — funcionan para cualquier persona.</span></li>
+        <li><i data-lucide="check-circle-2"></i><span><b>Sin experiencia previa.</b> No necesitas condición física especial — solo ganas de aprender.</span></li>
+        <li><i data-lucide="check-circle-2"></i><span><b>Práctico desde el primer minuto.</b> Todo lo que ves, lo practicas.</span></li>
+      </ul>
+    </div>
+    <div class="photo"><img src="assets/training-pareja.png" alt="Entrenamiento de defensa personal" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- HERITAGE (evergreen) -->
+<section class="heritage">
+  <div class="wrap">
+    <img class="book" src="assets/krav-maga-bible.png" alt="The Book of Krav-Maga, libro fundacional" loading="lazy">
+    <div>
+      <span class="kicker">Origen Israel</span>
+      <h2>El arte marcial israelí<br>de defensa personal</h2>
+      <p>Las técnicas que aprenderás vienen directamente de la escuela <b>Bukán</b> y del libro fundacional del Krav Magá de Yaron Lichtenstein — la fuente original de este arte marcial, creado en Israel para proteger vidas reales.</p>
+      <div class="flag"><span style="background:var(--blue)"></span><span style="background:#fff;box-shadow:inset 0 0 0 1px #cdd8e8"></span><span style="background:var(--blue)"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEARN (evergreen) -->
+<section class="learn">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Qué aprenderás</span>
+      <h2>En un taller intensivo, lo esencial para defenderte</h2>
+    </div>
+    <div class="grid">
+      <div class="lcard">
+        <div class="ico"><i data-lucide="zap"></i></div>
+        <h3>Golpes prácticos</h3>
+        <p>Golpes directos y efectivos a los puntos que de verdad detienen a un agresor.</p>
+      </div>
+      <div class="lcard">
+        <div class="ico"><i data-lucide="activity"></i></div>
+        <h3>Patadas básicas</h3>
+        <p>Patadas sencillas y potentes que puedes ejecutar sin entrenamiento previo.</p>
+      </div>
+      <div class="lcard">
+        <div class="ico"><i data-lucide="unlock"></i></div>
+        <h3>Liberaciones</h3>
+        <p>Salidas de agarres, estrangulamientos y abrazos por detrás — las situaciones más comunes.</p>
+      </div>
+    </div>
+    <div class="dur" id="learnDur"></div>
+  </div>
+</section>
+
+<!-- LOGISTICS (solo cuando hay taller activo) -->
+<section class="logi" id="logiSection">
+  <div class="wrap">
+    <div class="panel">
+      <div class="price-side">
+        <span class="kicker center">Inversión</span>
+        <div class="price-cards">
+          <div class="pcard" id="priceRow1">
+            <div class="pcard-amt" id="amt1">—</div>
+            <div class="pcard-who" id="who1">—</div>
+          </div>
+          <div class="pcard feat" id="priceRow2">
+            <span class="pcard-badge">Tráete a una amiga</span>
+            <div class="pcard-amt" id="amt2">—</div>
+            <div class="pcard-who" id="who2">—</div>
+          </div>
+        </div>
+        <p class="sub" id="priceSub">Cupo limitado — los lugares se confirman por orden de registro.</p>
+      </div>
+      <div class="info-side">
+        <div class="info-item"><i data-lucide="map-pin"></i><div><div class="t">Dónde</div><div class="v"><a class="maplink" id="infoLugarLink" href="#" target="_blank" rel="noopener">—</a></div><div class="v" id="infoCiudad" style="font-weight:400;color:var(--muted);font-size:14.5px;margin-top:2px">—</div><a class="maphint" id="infoMapBtn" href="#" target="_blank" rel="noopener"><i data-lucide="navigation"></i>Ver en Google Maps · Cómo llegar</a></div></div>
+        <div class="info-item"><i data-lucide="clock"></i><div><div class="t">Horario</div><div class="v" id="infoHora">—</div></div></div>
+        <div class="info-item"><i data-lucide="users"></i><div><div class="t">Cupo</div><div class="v" id="infoCupo">—</div></div></div>
+        <div class="bring"><b>Qué llevar</b><br>Ropa cómoda, calcetines y agua. Nada más — el resto lo ponemos nosotros.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR (evergreen) -->
+<section class="instructor">
+  <div class="wrap">
+    <div class="ins-info">
+      <span class="kicker">Tu instructor</span>
+      <h2>Manuel Acosta Ruiz</h2>
+      <p>Instructor certificado de Krav Magá por la escuela <b>Bukán</b> — la única escuela original de este arte marcial. Instructor desde <b>2019</b>.</p>
+    </div>
+    <div class="ins-media">
+      <figure class="ins-fig">
+        <img src="assets/instructor-gi.png" alt="Manuel Acosta con uniforme y escudo de Bukán Krav Maga" loading="lazy">
+        <figcaption>Uniforme y escudo de Bukán</figcaption>
+      </figure>
+      <figure class="ins-fig doc">
+        <img src="assets/diploma-instructor.png" alt="Diploma de instructor de Krav Magá — Bukán School of Krav Maga" loading="lazy">
+        <figcaption>Instructor certificado · Bukán, 2019</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <span class="kicker light center" id="finalKicker">Aparta tu lugar</span>
+    <h2>Aprende algo que puede<br>cambiarlo todo</h2>
+    <p id="finalLead">Escoge la fecha que mejor te acomode y escríbenos. Te resolvemos cualquier duda y confirmamos tu lugar al instante.</p>
+    <a class="wa gold lg wa-link" href="#" target="_blank" rel="noopener">
+      <i data-lucide="message-circle"></i><span id="finalCtaTxt">Quiero más información</span>
+    </a>
+    <div class="phone"><i data-lucide="phone"></i><span id="telVisible">—</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="text-decoration:none">
+      <img src="assets/escudo.png" alt="Escudo Bukán" style="height:52px">
+      <span class="wm" style="color:#fff;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.12em;font-weight:700">Bukán</span>
+    </a>
+    <nav class="fnav">
+      <a href="index.html">Inicio</a>
+      <a href="talleres.html">Talleres</a>
+      <a href="colaboraciones.html">Colaboraciones</a>
+    </nav>
+    <div class="loc">
+      <b>Krav Magá Bukán</b><br>
+      <span id="footCiudad">—</span><br>
+      WhatsApp <span id="footTel">—</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ====== Llena la página desde CONFIG (no necesitas editar esto) ====== */
+(function(){
+  var C = CONFIG;
+  var set = function(id, val){ var el = document.getElementById(id); if(el) el.textContent = val; };
+  var setHref = function(id, url){ var el = document.getElementById(id); if(el) el.href = url; };
+  var hide = function(id){ var el = document.getElementById(id); if(el) el.style.display = "none"; };
+
+  // WhatsApp: el texto precargado depende de si hay taller activo
+  var waTexto = C.tallerActivo ? C.whatsappActivo : C.whatsappProximo;
+  var waHref = "https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(waTexto);
+  document.querySelectorAll("a.wa-link").forEach(function(a){ a.href = waHref; });
+
+  // Datos comunes
+  set("telVisible", C.telefonoVisible);
+  set("footCiudad", C.ciudad);
+  set("footTel", C.telefonoVisible);
+  var foto = document.getElementById("heroFoto"); if(foto && C.foto) foto.src = C.foto;
+
+  if(!C.tallerActivo){
+    // ---------- MODO PRÓXIMAMENTE ----------
+    hide("datesBand"); hide("logiSection"); hide("heroFacts");
+    set("heroKicker", "Talleres de defensa personal");
+    document.getElementById("heroTitle").innerHTML = "Próximamente:<br>el siguiente taller";
+    document.getElementById("heroLead").innerHTML = "Damos talleres intensivos de <b>Defensa Personal</b> basados en Krav Magá — escuela <b>Bukán</b>. Ahora mismo estamos preparando la próxima fecha. Escríbenos y te avisamos en cuanto abra.";
+    set("heroCtaTxt", "Avísame del próximo taller");
+    set("topbarCta", "Avísame");
+    set("heroNote", "Sin compromiso");
+    set("finalKicker", "No te quedes fuera");
+    document.getElementById("finalLead").innerHTML = "Escríbenos por WhatsApp y te avisamos en cuanto abramos la próxima fecha. Sin compromiso.";
+    set("finalCtaTxt", "Avísame del próximo taller");
+    set("learnDur", "Esto es lo que practicas en cada taller");
+    return;
+  }
+
+  // ---------- MODO TALLER ACTIVO ----------
+  setHref("factLugarLink", C.mapsUrl);
+  setHref("infoLugarLink", C.mapsUrl);
+  setHref("infoMapBtn", C.mapsUrl);
+
+  hide("soonBox");
+  set("heroKicker", "Taller intensivo · " + C.publico);
+  set("topbarCta", "Quiero inscribirme");
+  set("heroCtaTxt", "Quiero inscribirme");
+
+  var hayDos = !!(C.fecha2 && C.fecha2.num);
+  var mes = C.fecha1.mes;
+  set("factFechas", hayDos
+      ? (C.fecha1.num + " o " + C.fecha2.num + " de " + mes.toLowerCase())
+      : (C.fecha1.num + " de " + mes.toLowerCase()));
+  set("factHora", C.hora);
+  set("factLugar", C.lugarCorto);
+  set("heroNote", "Solo " + C.cupo);
+
+  var meta = C.hora + " · " + C.duracion;
+  set("d1Num", C.fecha1.num); set("d1Mes", C.fecha1.mes); set("d1Dia", C.fecha1.dia); set("d1Meta", meta);
+  if(hayDos){
+    set("d2Num", C.fecha2.num); set("d2Mes", C.fecha2.mes); set("d2Dia", C.fecha2.dia); set("d2Meta", meta);
+  } else {
+    hide("dateCard2"); hide("dateOr");
+    var dw = document.getElementById("datesWrap"); if(dw) dw.classList.add("single");
+  }
+
+  set("learnDur", "Taller intensivo · " + C.duracion + " · " + C.hora);
+
+  set("amt1", C.precio1); set("who1", C.precio1Quien);
+  if(C.precio2){
+    set("amt2", C.precio2); set("who2", C.precio2Quien);
+  } else {
+    hide("priceRow2");
+  }
+  set("priceSub", "Cupo limitado a " + C.cupo + " — los lugares se confirman por orden de registro.");
+
+  set("infoLugarLink", C.lugar); set("infoCiudad", C.ciudad);
+  set("infoHora", C.hora); set("infoCupo", "Solo " + C.cupo);
+
+  set("finalKicker", "Aparta tu lugar");
+  set("finalCtaTxt", "Quiero más información");
+})();
+(function(){ if(window.lucide) lucide.createIcons(); })();
+</script>
+</body>
+</html>
